@@ -39,6 +39,12 @@ inc = mid (+ 1)
 dec :: Mem Int -> Mem Int
 dec = mid (subtract 1)
 
+-- ToString
+toString :: Mem Int -> String
+toString (Mem l v r) = concat (str' l ++ show v : str' r)
+  where
+    str' (x:xs) = show x : str' xs
+
 -- Eval
 eval :: Mem Int -> [BFAST] -> IO (Mem Int)
 eval m [] = return m
